@@ -1,6 +1,28 @@
 .App {
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-family: 'Poppins', sans-serif;
+  color: #efefef;
+  background-color: #000000;
 }
+
+.header {
+  padding: 15px;
+}
+
+.game-container{
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  gap: 30px;
+  margin-left: 175px;
+  text-align: center;
+}
+
+.game img {
+  height: 300px;
+  width: 350px;
+}
+
+
 
