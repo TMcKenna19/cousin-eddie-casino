@@ -4,24 +4,57 @@
   font-family: 'Poppins', sans-serif;
   color: #efefef;
   background-color: #000000;
+  padding: 25px;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #efefef;
 }
 
 .header {
-  padding: 15px;
+  padding: 0px;
 }
 
-.game-container{
+.game-container {
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
-  gap: 30px;
-  margin-left: 175px;
+  gap: 25px;
+  margin: 70px;
   text-align: center;
 }
 
-.game img {
-  height: 300px;
+.game-green {
+  border-radius: 15px;
+  height: 350px;
+  padding: 25px;
+}
+
+.game-pink {
+  border-radius: 15px;
+  height: 350px;
+  padding: 25px;
+}
+
+.game-green img {
+  border-radius: 15px;
+  height: 250px;
   width: 350px;
+}
+
+.game-pink img {
+  border-radius: 15px;
+  height: 250px;
+  width: 350px;
+}
+
+.game-green:hover {
+  box-shadow: 0 2px 50px 0 rgb(137, 255, 11);
+}
+
+.game-pink:hover {
+  box-shadow: 0 2px 50px 0 rgb(255, 11, 214);
 }
 
 
