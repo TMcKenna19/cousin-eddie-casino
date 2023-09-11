@@ -1,31 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 const PickNumber = () => {
     const [playerBalance, setPlayerBalance] = useState(25);
-    const [playerBet, setPlayerBet] = useState();
-    const [number, setNumber] = useState();
-    const [playerNumber, setPlayerNumber] = useState();
-
-    //Get random number
-    const getNumber = () => {
-        return Math.floor(Math.random() * 10) + 1;
-    }
+    const [dealerNumber, setDealerNumber] = useState();
+    const [formData, setFormData] = useState({
+        playerNumber: 0,
+        playerBet: 0
+    })
+    
+    const changeHandler = e => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    };
    
-    const handleClick = () => {
-        setNumber(getNumber);
-        if(playerNumber = getNumber) {
-            playerBet + playerBalance
+    const submitHandler = e => {
+        e.preventDefault();
+        const newDealerNumber = Math.floor(Math.random() * 10 + 1);
+        setDealerNumber(newDealerNumber);
+        if(formData.playerNumber !== newDealerNumber){
+            setPlayerBalance((playerBalance - formData.playerBet))
+        }else {
+            setPlayerBalance((formData.playerBet + playerBalance))
         }
-        console.log(number)
+        console.log("dealer number -> ", newDealerNumber);
+        console.log("player number -> ", formData.playerNumber);
+        console.log("Player bet -> ", formData.playerBet)
+        
     }
 
+    
 
     return(
         <>
-        <h1>Pick A Number</h1>
-        <p>${playerBalance}</p>
-        <p>Dealer Number: {number}</p>
-        <button onClick={handleClick}>Get Number</button>
+        <div className="header">
+            <h1>Pick A Number</h1>
+            <p>Player balance: ${playerBalance}</p>
+            <p>Dealer Number: {dealerNumber}</p>
+        </div>
+        <div className="player-form">
+            <form onSubmit={submitHandler}>
+                <div className="form-input">
+                    <input type="text" name="playerBet" id="" value={formData.playerBet} onChange={changeHandler} placeholder="Make a Wager" />
+                    <input type="number" name="playerNumber" id="" value={formData.playerNumber} onChange={changeHandler} placeholder="Guess a number" />
+                </div>             
+                <button type="submit" className="btn btn-outline-warning mt-3">Place Bet</button>
+            </form>
+        </div>
+        
         
         </>
     )
