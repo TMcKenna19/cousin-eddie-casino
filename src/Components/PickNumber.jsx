@@ -15,21 +15,22 @@ const PickNumber = () => {
    
     const submitHandler = e => {
         e.preventDefault();
-        const newDealerNumber = Math.floor(Math.random() * 10 + 1);
+        const newDealerNumber = Math.floor(Math.random() * 1 + 1);
         setDealerNumber(newDealerNumber);
-        if(formData.playerNumber !== newDealerNumber){
-            setPlayerBalance((playerBalance - formData.playerBet))
+        if(formData.playerNumber == newDealerNumber){
+            setPlayerBalance(Number(formData.playerBet) + Number(playerBalance))
         }else {
-            setPlayerBalance((formData.playerBet + playerBalance))
+            setPlayerBalance(Number(playerBalance) - Number(formData.playerBet))
         }
-        console.log("dealer number -> ", newDealerNumber);
-        console.log("player number -> ", formData.playerNumber);
-        console.log("Player bet -> ", formData.playerBet)
+        console.log("dealer number ", newDealerNumber);
+        console.log("player number ", formData.playerNumber);
+        console.log("Player bet ", formData.playerBet)
+        console.log("player balance ", playerBalance)
         
     }
 
     
-
+    
     return(
         <>
         <div className="header">
@@ -40,7 +41,7 @@ const PickNumber = () => {
         <div className="player-form">
             <form onSubmit={submitHandler}>
                 <div className="form-input">
-                    <input type="text" name="playerBet" id="" value={formData.playerBet} onChange={changeHandler} placeholder="Make a Wager" />
+                    <input type="number" name="playerBet" id="" value={formData.playerBet} onChange={changeHandler} placeholder="Make a Wager" />
                     <input type="number" name="playerNumber" id="" value={formData.playerNumber} onChange={changeHandler} placeholder="Guess a number" />
                 </div>             
                 <button type="submit" className="btn btn-outline-warning mt-3">Place Bet</button>
